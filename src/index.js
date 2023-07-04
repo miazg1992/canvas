@@ -1,4 +1,6 @@
-import Photo from './img/img1.jpg';
+import Photo from './assets/img/img1.jpg';
+
+import 'normalize.css';
 import './components/main.scss';
 
 

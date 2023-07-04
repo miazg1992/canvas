@@ -1,6 +1,9 @@
-$primary: #f0ed48;
+@import "../../node_modules/normalize.css/normalize.css";
+@import "variables";
 
-body {
-    background-color: $primary;
-    font-size: 30px;
-}
+@import "mixins";
+@import "reset";
+
+@import "typography";
+@import "base";
+@import "header";

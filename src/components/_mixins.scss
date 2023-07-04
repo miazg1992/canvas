@@ -1,0 +1,30 @@
+@mixin mqScreen($breakpoint) {
+
+    $size: map-get($map: $breakpoints, $key: $breakpoint );
+
+    @if($size) {
+        @media screen and #{$size} {
+            @content;
+        }
+    }
+
+    @else {
+        @error '"#{$breakpoint}" - nie ma tej wielkości'
+    }
+}
+
+;
+
+@mixin mq($breakpoint) {
+    $size: map-get($breakpoints, $breakpoint);
+
+    @if($size) {
+        @media #{$size} {
+            @content;
+        }
+    }
+
+    @else {
+        @error '"#{breakpoint}" - nie rozpoznaje tej wielkości';
+    }
+}

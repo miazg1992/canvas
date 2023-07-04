@@ -1,0 +1,22 @@
+h1 {
+    font-size: 20px;
+}
+
+.header {
+    background-color: $primary-color;
+    color: white;
+    padding: $main-spacing 0;
+    margin-bottom: $main-spacing;
+
+
+    &__content {
+        display: flex;
+        align-items: center;
+    }
+
+    &__logo {
+        margin-right: calc($main-spacing / 2);
+        width: calc($main-spacing * 3);
+
+    }
+}

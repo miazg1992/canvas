@@ -1,0 +1,38 @@
+@import "variables";
+@import "mixins";
+
+html {
+    font-size: $small-font-size;
+    font-family: $font-family;
+
+    //     @include mqScreen(tablet) {
+    //         font-size: $base-font-size;
+    //     }
+    // }
+
+    @include mq(smartphone) {
+        font-size: 18px;
+    }
+}
+
+strong {
+    font-weight: 700;
+}
+
+
+h1 {
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.2rem;
+    margin-bottom: calc($main-spacing / 2);
+}
+
+p {
+    margin-bottom: calc($main-spacing / 2);
+}
+
+svg {
+    fill: $primary-color
+}

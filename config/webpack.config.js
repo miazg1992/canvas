@@ -7,19 +7,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: ['./src/index.js', './src/components/main.scss'],
+    entry: ['./src/index.js'],
     output: {
         filename: 'index-bundle.js',
         path: path.resolve(__dirname, '../', 'dist'),
     },
     devServer: {
         static: {
-            directory: path.join(__dirname, '../', 'src/templates'),
+            directory: path.join(__dirname, '../', 'src/'),
             watch: true,
         },
         compress: true,
-        port: 8000,
-        liveReload: true
+        port: 3000,
+        liveReload: true,
+        open: true,
     },
     module: {
         rules: [
@@ -27,8 +28,12 @@ module.exports = {
                 test: /\.(jpg|png)$/,
                 type: 'asset/resource',
                 generator: {
-                    filename: 'img/[name]-[hash:6][ext][query]'
+                    filename: 'img/name-[hash:4][ext][query]'
                 }
+            },
+            {
+                test: /\.(css)$/,
+                use: ['style-loader', 'css-loader']
             },
             {
                 test: /\.(scss|sass)$/,
@@ -54,7 +59,7 @@ module.exports = {
         new HtmlWebpackPlugin(
             {
                 filename: "index.html",
-                template: "src/templates/template.html",
+                template: "src/template.html",
                 title: "moja formatka",
                 inject: "body",
             }
