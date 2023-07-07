@@ -191,7 +191,7 @@ class Animation {
             this.mouseX = event.clientX;
             this.mouseY = event.clientY;
 
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 5; i++) {
                 this.particlesArray.push(new Particle(this.mouseX, this.mouseY));
 
             }
@@ -220,10 +220,28 @@ class Animation {
             this.particlesArray[i].update();
             this.particlesArray[i].draw();
 
+            for (let j = 1; j < this.particlesArray.length; j++) {
+
+                const dx = this.particlesArray[i].x - this.particlesArray[j].x;
+                const dy = this.particlesArray[i].y - this.particlesArray[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy)
+                if (distance < 100) {
+                    this.ctx.beginPath();
+                    this.ctx.strokeStyle = this.particlesArray[i].color;
+                    this.ctx.lineWidth = 0.5;
+                    this.ctx.moveTo(this.particlesArray[i].x, this.particlesArray[i].y);
+                    this.ctx.lineTo(this.particlesArray[j].x, this.particlesArray[j].y);
+                    this.ctx.stroke();
+                }
+
+            }
+
             if (this.particlesArray[i].size <= 0.3) {
                 this.particlesArray.splice(i, 1);
                 i--;
             }
+
+
         }
     };
 
@@ -232,7 +250,7 @@ class Animation {
         // this.ctx.fillStyle = "rgba(0,0,0,0.05)";
         // this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height)
         this.handleParticles();
-        hue += 0.5;
+        hue += 2;
         window.requestAnimationFrame(() => this.animate());
     }
 }
